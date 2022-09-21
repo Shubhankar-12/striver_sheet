@@ -5,15 +5,14 @@ void setZeros(vector<vector<int>> &arr)
 {
 
     int n = arr.size(), m = arr[0].size();
-    vector<int> rows(n, -1), cols(m, -1);
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
         {
             if (arr[i][j] == 0)
             {
-                rows[i] = 0;
-                cols[j] = 0;
+                arr[i][0] = 0;
+                arr[0][j] = 0;
             }
         }
     }
@@ -21,7 +20,7 @@ void setZeros(vector<vector<int>> &arr)
     {
         for (int j = 0; j < m; j++)
         {
-            if (rows[i] == 0 || cols[j] == 0)
+            if (arr[i][0] == 0 || arr[0][j] == 0)
             {
                 arr[i][j] = 0;
             }
