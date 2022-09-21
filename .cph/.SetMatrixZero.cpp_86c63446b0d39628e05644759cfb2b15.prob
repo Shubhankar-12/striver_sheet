@@ -1,0 +1,1 @@
+{"name":"Local: SetMatrixZero","url":"d:\\Striver\\SetMatrixZero.cpp","tests":[{"id":1663761778543,"input":"2\n2 3\n7 19 3\n4 21 0\n3 3\n1 2 3\n4 0 6\n7 8 9","output":"7 19 0\n0 0 0\n1 0 3\n0 0 0\n7 0 9"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Striver\\SetMatrixZero.cpp","group":"local","local":true}
