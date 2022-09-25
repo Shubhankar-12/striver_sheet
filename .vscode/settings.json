@@ -1,0 +1,6 @@
+{
+  "files.associations": {
+    "*.mo": "motoko",
+    "iostream": "cpp"
+  }
+}

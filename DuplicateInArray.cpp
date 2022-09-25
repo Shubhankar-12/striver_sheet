@@ -24,6 +24,6 @@ int main()
         arr.push_back(t);
     }
     cout << findDuplicate(arr, n) << endl;
-    ;
+
     return 0;
 }
