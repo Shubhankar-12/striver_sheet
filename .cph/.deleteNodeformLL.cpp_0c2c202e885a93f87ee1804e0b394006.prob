@@ -1,0 +1,1 @@
+{"name":"Local: deleteNodeformLL","url":"d:\\Striver\\deleteNodeformLL.cpp","tests":[{"id":1666198141480,"input":"4\n2 5 7 10 -1\n7\n-8 3 4 -2 1 -1\n4\n4 9 10 -1\n4\n-7 7 -1\n-7","output":"2 5 10 \n10 -1\n-8 3 -2 1 1 -1\n9 10 10 -1\n7 7 -1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Striver\\deleteNodeformLL.cpp","group":"local","local":true}
