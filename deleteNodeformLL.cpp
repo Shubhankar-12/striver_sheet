@@ -16,13 +16,9 @@ public:
 
 void deleteNode(LinkedListNode<int> *node)
 {
-    if (!node->next)
-    {
-        node->data = -1;
-        return;
-    }
     node->data = node->next->data;
-    deleteNode(node->next);
+    node->next = node->next->next;
+    return;
 }
 
 int main()
