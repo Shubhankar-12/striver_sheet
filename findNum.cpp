@@ -11,6 +11,7 @@ int main()
         cin >> arr[i];
     }
     int si = 0, ei = n - 1;
+    // twice search
     int focc = 0, locc = 0;
     while (si <= ei)
     {
