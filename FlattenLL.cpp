@@ -25,6 +25,12 @@ Node *flattenLinkedList(Node *head)
         while (t->child)
         {
             t = t->child;
+            if (t->data > c->next->data)
+            {
+                int temp = t->data;
+                t->data = c->next->data;
+                c->next->data = temp;
+            }
         }
         t->child = c->next;
         c->next = NULL;
