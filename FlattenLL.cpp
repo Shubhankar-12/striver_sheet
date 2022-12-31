@@ -23,13 +23,12 @@ Node *flattenLinkedList(Node *head)
     {
         if (current->child)
         {
-            // Find the end of the list
             Node *end = current->child;
             while (end->next)
             {
                 end = end->next;
             }
-            // Append the child list to the end of the current list
+
             end->next = current->next;
             current->next = current->child;
             current->child = NULL;
