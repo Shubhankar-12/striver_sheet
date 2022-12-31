@@ -16,7 +16,7 @@ public:
     }
 };
 
-void flattenList(Node *head)
+Node *flattenLinkedList(Node *head)
 {
     Node *current = head;
     while (current)
@@ -36,6 +36,7 @@ void flattenList(Node *head)
         }
         current = current->next;
     }
+    return head;
 }
 
 Node *flattenLinkedList(Node *head)
