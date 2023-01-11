@@ -12,7 +12,7 @@ public:
         this->next = NULL;
     }
 };
-
+// 2pointer
 Node *findMiddle(Node *head)
 {
     Node *fast = head;
