@@ -8,9 +8,7 @@ void sort012(int *arr, int n)
     {
         if (arr[l] == 0)
         {
-            int temp = arr[l];
-            arr[l] = arr[i];
-            arr[i] = temp;
+            swap(arr[i], arr[l]);
             i++;
             l++;
         }
@@ -20,9 +18,7 @@ void sort012(int *arr, int n)
         }
         else
         {
-            int temp = arr[l];
-            arr[l] = arr[j];
-            arr[j] = temp;
+            swap(arr[l], arr[j]);
             j--;
         }
     }
