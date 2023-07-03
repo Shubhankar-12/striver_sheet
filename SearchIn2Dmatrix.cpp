@@ -15,6 +15,10 @@ bool findTargetInMatrix(vector<vector<int>> &mat, int m, int n, int t)
     }
     return false;
 }
+bool searchMatrix(vector<vector<int>> &mat, int t)
+{
+    return findTargetInMatrix(mat, mat.size(), mat[0].size(), t);
+}
 
 int main()
 {
@@ -37,7 +41,7 @@ int main()
             }
             arr.push_back(temp);
         }
-        findTargetInMatrix(arr, m, n, tar) ? (cout << "TRUE" << endl) : (cout << "FALSE" << endl);
+        searchMatrix(arr, tar) ? (cout << "TRUE" << endl) : (cout << "FALSE" << endl);
     }
 
     return 0;
