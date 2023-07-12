@@ -10,7 +10,6 @@ int findAllSubarraysWithGivenSum(vector<int> &arr, int k)
     {
         preSum += i;
         cnt += mp[preSum - k];
-
         mp[preSum]++;
     }
     return cnt;
