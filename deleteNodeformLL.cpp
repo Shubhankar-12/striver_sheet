@@ -14,10 +14,10 @@ public:
     }
 };
 
-void deleteNode(LinkedListNode<int> *node)
+void deleteNode(LinkedListNode<int> *t)
 {
-    node->data = node->next->data;
-    node->next = node->next->next;
+    t->data = t->next->data;
+    t->next = t->next->next;
     return;
 }
 
