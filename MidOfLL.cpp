@@ -17,7 +17,7 @@ Node *findMiddle(Node *head)
 {
     Node *fast = head;
     Node *slow = head;
-    while (fast != nullptr && fast->next != nullptr)
+    while (fast && fast->next)
     {
         fast = fast->next->next;
         slow = slow->next;
