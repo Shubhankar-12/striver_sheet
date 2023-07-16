@@ -26,7 +26,6 @@ int LinkedListLength(Node *head)
 
 Node *getListAfterReverseOperation(Node *head, int n, int b[])
 {
-    // Write your code here.
     if (head == NULL || head->next == NULL)
         return head;
 
