@@ -25,6 +25,7 @@ int lengthLL(Node *head)
     return cnt;
 }
 
+// fn
 Node *getListAfterReverseOperation(Node *head, int n, int b[])
 {
     Node *dum = new Node(INT_MIN);
