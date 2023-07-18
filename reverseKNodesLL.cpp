@@ -13,42 +13,73 @@ public:
     }
 };
 
-int lengthLL(Node *head)
+int LinkedListLength(Node *head)
 {
-    Node *t = head;
-    int cnt = 0;
-    while (t)
+    int count = 0;
+    while (head)
     {
-        cnt++;
-        t = t->next;
+        ++count;
+        head = head->next;
     }
-    return cnt;
+    return count;
 }
 
-// fn
 Node *getListAfterReverseOperation(Node *head, int n, int b[])
 {
-    Node *dum = new Node(INT_MIN);
-    dum->next = head;
-    Node *pre = dum;
-    Node *cur, *nex;
-    int len = lengthLL(head);
+    // Write your code here.
+    if (head == NULL || head->next == NULL)
+        return head;
+
+    int length = LinkedListLength(head);
+
+    Node *dummy = new Node(0);
+    dummy->next = head;
+    Node *prev = dummy;
+    Node *curr, *nex;
     int i = 0;
-    while (len >= b[i] && i < n)
+
+    while (length > 0 && i < n)
     {
-        cur = pre->next;
-        nex = cur->next;
-        for (int j = 1; j < b[i]; j++)
+        if (b[i] == 0)
         {
-            cur->next = nex->next;
-            nex->next = pre->next;
-            pre->next = nex;
-            nex = cur->next;
+            i++;
+            continue;
+        };
+        curr = prev->next;
+        nex = curr->next;
+
+        if (length >= b[i])
+        {
+            for (int j = 1; j < b[i]; j++)
+            {
+                curr->next = nex->next;
+                nex->next = prev->next;
+                prev->next = nex;
+                nex = curr->next;
+            }
+
+            prev = curr;
+            length -= b[i];
+            i++;
         }
-        pre = cur;
-        len -= b[i++];
+
+        else if (length < b[i])
+        {
+            for (int j = 1; j < length; j++)
+            {
+                curr->next = nex->next;
+                nex->next = prev->next;
+                prev->next = nex;
+                nex = curr->next;
+            }
+
+            prev = curr;
+            length -= b[i];
+            i++;
+        }
     }
-    return dum->next;
+
+    return dummy->next;
 }
 
 int main()
