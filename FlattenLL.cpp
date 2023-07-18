@@ -16,49 +16,39 @@ public:
     }
 };
 
-Node *flattenLinkedList(Node *head)
+Node *merge(Node *head1, Node *head2)
 {
-    Node *current = head;
-    while (current)
+    if (head1 == nullptr)
     {
-        if (current->child)
-        {
-            Node *end = current->child;
-            while (end->next)
-            {
-                end = end->next;
-            }
-
-            end->next = current->next;
-            current->next = current->child;
-            current->child = NULL;
-        }
-        current = current->next;
+        return head2;
     }
-    return head;
+    if (head2 == nullptr)
+    {
+        return head1;
+    }
+    Node *ans = nullptr;
+    if (head1->data <= head2->data)
+    {
+        ans = head1;
+        ans->child = merge(head1->child, head2);
+    }
+    else
+    {
+        ans = head2;
+        ans->child = merge(head1, head2->child);
+    }
+    return ans;
 }
-
 Node *flattenLinkedList(Node *head)
 {
-    Node *t = head;
-    Node *c = t;
-    while (c->next)
+    if (head == nullptr || head->next == nullptr)
     {
-        while (t->child)
-        {
-            t = t->child;
-            if (t->data > c->next->data)
-            {
-                int temp = t->data;
-                t->data = c->next->data;
-                c->next->data = temp;
-            }
-        }
-        t->child = c->next;
-        c->next = NULL;
-        c = t->child;
+        return head;
     }
-    return head;
+    Node *newLL = flattenLinkedList(head->next);
+    head->next = nullptr;
+    Node *newHead = merge(newLL, head);
+    return newHead;
 }
 
 int main()
