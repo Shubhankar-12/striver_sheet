@@ -14,20 +14,44 @@ public:
     }
 };
 
+LinkedListNode<int> *rev(LinkedListNode<int> *ptr)
+{
+    LinkedListNode<int> *pre = NULL;
+    LinkedListNode<int> *nex = NULL;
+    while (ptr)
+    {
+        nex = ptr->next;
+        ptr->next = pre;
+        pre = ptr;
+        ptr = nex;
+    }
+    return pre;
+}
+
 bool isPalindrome(LinkedListNode<int> *head)
 {
-    vector<int> v;
-    LinkedListNode<int> *t = head;
-    while (t)
+    if (head == NULL || head->next == NULL)
+        return true;
+
+    LinkedListNode<int> *slow = head;
+    LinkedListNode<int> *fast = head;
+
+    while (fast->next != NULL && fast->next->next != NULL)
     {
-        v.push_back(t->data);
+        slow = slow->next;
+        fast = fast->next->next;
     }
-    t = head;
-    for (int i = v.size() - 1; i >= 0; i--)
+
+    slow->next = rev(slow->next);
+    slow = slow->next;
+    LinkedListNode<int> *dummy = head;
+
+    while (slow != NULL)
     {
-        if (t->data != v[i])
+        if (dummy->data != slow->data)
             return false;
-        t = t->next;
+        dummy = dummy->next;
+        slow = slow->next;
     }
     return true;
 }
