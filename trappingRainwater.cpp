@@ -2,6 +2,7 @@
 using namespace std;
 #define ll long long
 
+// 2pointer
 ll getTrappedWater(ll *arr, int n)
 {
     ll i = 0, j = n - 1, lm = 0, rm = 0;
