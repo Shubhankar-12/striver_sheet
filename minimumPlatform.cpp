@@ -26,14 +26,6 @@ int calculateMinPatforms(int at[], int dt[], int n)
 
 int main()
 {
-    int n;
-    cin >> n;
-    int st[n];
-    int end[n];
-    for (int i = 0; i < n; i++)
-        cin >> st[i];
-    for (int i = 0; i < n; i++)
-        cin >> end[i];
-    cout << calculateMinPatforms(st, end, n);
+
     return 0;
 }
