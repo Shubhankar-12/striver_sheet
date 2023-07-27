@@ -9,6 +9,7 @@ void help(vector<int> &num, int i, int n, vector<int> &ans, int sum)
         return;
     }
     help(num, i + 1, n, ans, sum + num[i]);
+
     help(num, i + 1, n, ans, sum);
 }
 
