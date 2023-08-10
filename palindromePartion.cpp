@@ -11,7 +11,7 @@ bool isPalindrome(string s, int st, int end)
     return true;
 }
 
-void help(string s, int ind, vector<vector<string>> &ans, vector<string> &ref)
+void help(string &s, int ind, vector<vector<string>> &ans, vector<string> &ref)
 {
     if (ind == s.length())
     {
