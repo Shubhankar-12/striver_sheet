@@ -2,6 +2,7 @@
   "files.associations": {
     "*.mo": "motoko",
     "iostream": "cpp",
-    "ostream": "cpp"
+    "ostream": "cpp",
+    "vector": "cpp"
   }
 }
