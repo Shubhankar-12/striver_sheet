@@ -2,6 +2,60 @@
 using namespace std;
 #include <bits/stdc++.h>
 
+int removemin(vector<int> &heap)
+{
+
+    int ans = heap[0];
+
+    heap[0] = heap[heap.size() - 1];
+
+    heap.pop_back();
+
+    int pi = 0;
+
+    int n = heap.size();
+
+    int minindx;
+
+    while (pi < n)
+    {
+
+        int lci = 2 * pi + 1;
+
+        int rci = 2 * pi + 2;
+
+        if (lci < n && rci < n)
+        {
+
+            if (heap[lci] < heap[rci])
+                minindx = lci;
+
+            else
+                minindx = rci;
+        }
+
+        else if (lci < n && rci >= n)
+        {
+
+            minindx = lci;
+        }
+        else
+            break;
+
+        if (heap[minindx] < heap[pi])
+        {
+
+            swap(heap[minindx], heap[pi]);
+        }
+        else
+            break;
+
+        pi = minindx;
+    }
+
+    return ans;
+}
+
 void insertinheap(vector<int> &heap, int ele)
 {
 
