@@ -1,6 +1,30 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+vector<int> bfs(int m, vector<int> adj[])
+{
+    int vis[m] = {0};
+    vis[0] = 1;
+    queue<int> q;
+    vector<int> ans;
+    q.push(0);
+    while (!q.empty())
+    {
+        int node = q.front();
+        q.pop();
+        ans.push_back(node);
+        for (auto it : adj[node])
+        {
+            if (!vis[it])
+            {
+                vis[it] = 1;
+                q.push(it);
+            }
+        }
+    }
+    return ans;
+}
+
 void dfs(int node, vector<int> &vis, vector<int> adj[], vector<int> &tmp)
 {
     vis[node] = 1;
