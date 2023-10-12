@@ -43,9 +43,96 @@ int romanToInt(string s)
     }
     return ans;
 }
+// 27 107
+string intToRoman(int n)
+{
+    string s = "";
+    while (n > 0)
+    {
+        if (n >= 1000)
+        {
+            s = s + "M";
+            n = n - 1000;
+            continue;
+        }
+        else if (n >= 900)
+        {
+            s = s + "CM";
+            n = n - 900;
+            continue;
+        }
+        else if (n >= 500)
+        {
+            s = s + "D";
+            n = n - 500;
+            continue;
+        }
+        else if (n >= 400)
+        {
+            s = s + "CD";
+            n = n - 400;
+            continue;
+        }
+        else if (n >= 100)
+        {
+            s = s + "C";
+            n = n - 100;
+            continue;
+        }
+        else if (n >= 90)
+        {
+            s = s + "XC";
+            n = n - 90;
+            continue;
+        }
+        else if (n >= 50)
+        {
+            s = s + "L";
+            n = n - 50;
+            continue;
+        }
+        else if (n >= 40)
+        {
+            s = s + "XL";
+            n = n - 40;
+            continue;
+        }
+        else if (n >= 10)
+        {
+            s = s + "X";
+            n = n - 10;
+            continue;
+        }
+        else if (n >= 9)
+        {
+            s = s + "IX";
+            n = n - 9;
+            continue;
+        }
+        else if (n >= 5)
+        {
+            s = s + "V";
+            n = n - 5;
+            continue;
+        }
+        else if (n == 4)
+        {
+            s = s + "IV";
+            n = n - 4;
+            continue;
+        }
+        else if (n >= 1)
+        {
+            s = s + "I";
+            n = n - 1;
+            continue;
+        }
+    }
+    return s;
+}
 
 int main()
 {
-
+    cout << intToRoman(27);
     return 0;
 }
