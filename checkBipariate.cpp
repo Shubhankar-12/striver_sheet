@@ -24,6 +24,22 @@ bool bfs(vector<vector<int>> &adj, vector<int> &vis, int src)
     return true;
 }
 
+bool dfs(vector<vector<int>> &adj, vector<int> &vis, int src, int col)
+{
+    vis[src] = col;
+    for (auto it : adj[src])
+    {
+        if (vis[it] == -1)
+        {
+            if (!dfs(adj, vis, it, !col))
+                return false;
+        }
+        else if (vis[it] == col)
+            return false;
+    }
+    return true;
+}
+
 bool isGraphBirpatite(vector<vector<int>> &edges)
 {
     int n = edges.size();
