@@ -60,7 +60,7 @@ bool isGraphBirpatite(vector<vector<int>> &edges)
     {
         if (vis[i] == -1)
         {
-            bool fl = bfs(adj, vis, i);
+            bool fl = dfs(adj, vis, i, 0);
             if (fl == false)
                 return false;
         }
