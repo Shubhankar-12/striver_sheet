@@ -21,29 +21,35 @@ bool dfs(int node, vector<int> ad[], int vis[], int pathVis[])
 }
 
 // bfs
-bool bfs(int node, vector<int> ad[], int vis[], int pathVis[])
+bool bfs(int node, vector<int> adj[], int n)
 {
-    vis[node] = 1;
-    pathVis[node] = 1;
+    vector<int> indeg(n, 0);
+    for (int i = 0; i < n; i++)
+    {
+        for (auto it : adj[i])
+            indeg[it]++;
+    }
     queue<int> q;
-    q.push(node);
+    vector<int> topo;
+    for (int i = 0; i < n; i++)
+    {
+        if (indeg[i] == 0)
+            q.push(i);
+    }
     while (!q.empty())
     {
         int fr = q.front();
         q.pop();
-        for (auto it : ad[fr])
+        topo.push_back(fr);
+        for (auto it : adj[fr])
         {
-            if (!vis[it])
-            {
-                vis[it] = 1;
-                pathVis[it] = 1;
+            indeg[it]--;
+            if (indeg[it] == 0)
                 q.push(it);
-            }
-            else if (pathVis[it])
-                return true;
-            pathVis[it] = false;
         }
     }
+    if (topo.size() == n)
+        return true;
     return false;
 }
 
@@ -65,6 +71,43 @@ int detectCycleInDirectedGraph(int n, vector<pair<int, int>> &edges)
         }
     }
     return 0;
+}
+int detectCycleInDirectedGraphBFS(int n, vector<pair<int, int>> &edges)
+{
+    vector<int> adj[n + 1];
+    for (auto it : edges)
+    {
+        adj[it.first].push_back(it.second);
+    }
+    vector<int> indeg(n + 1, 0);
+    for (int i = 0; i <= n; i++)
+    {
+        for (auto it : adj[i])
+            indeg[it]++;
+    }
+    queue<int> q;
+    int cnt = 0;
+    for (int i = 1; i <= n; i++)
+    {
+        if (indeg[i] == 0)
+            q.push(i);
+    }
+
+    while (!q.empty())
+    {
+        int fr = q.front();
+        q.pop();
+        cnt++;
+        for (auto it : adj[fr])
+        {
+            indeg[it]--;
+            if (indeg[it] == 0)
+                q.push(it);
+        }
+    }
+    if (cnt == n)
+        return 0;
+    return 1;
 }
 
 int main()
