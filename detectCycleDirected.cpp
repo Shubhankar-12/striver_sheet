@@ -20,6 +20,33 @@ bool dfs(int node, vector<int> ad[], int vis[], int pathVis[])
     return false;
 }
 
+// bfs
+bool bfs(int node, vector<int> ad[], int vis[], int pathVis[])
+{
+    vis[node] = 1;
+    pathVis[node] = 1;
+    queue<int> q;
+    q.push(node);
+    while (!q.empty())
+    {
+        int fr = q.front();
+        q.pop();
+        for (auto it : ad[fr])
+        {
+            if (!vis[it])
+            {
+                vis[it] = 1;
+                pathVis[it] = 1;
+                q.push(it);
+            }
+            else if (pathVis[it])
+                return true;
+            pathVis[it] = false;
+        }
+    }
+    return false;
+}
+
 int detectCycleInDirectedGraph(int n, vector<pair<int, int>> &edges)
 {
     int vis[n + 1] = {0};
