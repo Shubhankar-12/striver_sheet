@@ -14,7 +14,7 @@ void dfs(int node, vector<vector<int>> &adj, int vis[], stack<int> &st)
     st.push(node);
 }
 
-vector<int> topologicalSort(vector<vector<int>> &edges, int v, int e)
+vector<int> topologicalSortDFS(vector<vector<int>> &edges, int v, int e)
 {
     // Write your code here
     vector<vector<int>> adj(v);
@@ -39,7 +39,42 @@ vector<int> topologicalSort(vector<vector<int>> &edges, int v, int e)
     }
     return ans;
 }
-
+vector<int> topologicalSortBFS(vector<vector<int>> &edges, int v, int e)
+{
+    vector<vector<int>> adj(v);
+    for (int i = 0; i < e; i++)
+    {
+        adj[edges[i][0]].push_back(edges[i][1]);
+    }
+    queue<int> q;
+    vector<int> indeg(v, 0);
+    for (int i = 0; i < v; i++)
+    {
+        for (auto it : adj[i])
+        {
+            indeg[it]++;
+        }
+    }
+    for (int i = 0; i < v; i++)
+    {
+        if (indeg[i] == 0)
+            q.push(i);
+    }
+    vector<int> ans;
+    while (!q.empty())
+    {
+        int node = q.front();
+        q.pop();
+        ans.push_back(node);
+        for (auto it : adj[node])
+        {
+            indeg[it]--;
+            if (indeg[it] == 0)
+                q.push(it);
+        }
+    }
+    return ans;
+}
 int main()
 {
 
